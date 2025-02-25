@@ -125,6 +125,170 @@
         function toggleTheme() {
             document.body.classList.toggle('dark-mode');
         }
+        
+    <title>My Projects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 { color: #0077cc; }
+        
+        /* Slideshow Container */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+        }
+        
+        .slides {
+            display: none;
+            width: 100%;
+            border-radius: 10px;
+        }
+        
+        /* Navigation Buttons */
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        .prev { left: 10px; }
+        .next { right: 10px; }
+        
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Dots below the slideshow */
+        .dots-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .dot {
+            height: 12px;
+            width: 12px;
+            margin: 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .active, .dot:hover {
+            background-color: #0077cc;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>My Projects</h1>
+        <p>Swipe through my featured projects!</p>
+
+        <!-- Slideshow Container -->
+        <div class="slideshow-container">
+            <img class="slides" src="https://via.placeholder.com/800x400.png?text=Project+1" alt="Project 1">
+            <img class="slides" src="https://via.placeholder.com/800x400.png?text=Project+2" alt="Project 2">
+            <img class="slides" src="https://via.placeholder.com/800x400.png?text=Project+3" alt="Project 3">
+
+            <!-- Navigation buttons -->
+            <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
+            <span class="next" onclick="changeSlide(1)">&#10095;</span>
+        </div>
+
+        <!-- Dots (Pagination) -->
+        <div class="dots-container">
+            <span class="dot" onclick="setSlide(0)"></span>
+            <span class="dot" onclick="setSlide(1)"></span>
+            <span class="dot" onclick="setSlide(2)"></span>
+        </div>
+
+        <!-- Project Descriptions -->
+        <h3 id="project-title">Project 1: Data Science Dashboard</h3>
+        <p id="project-desc">An interactive dashboard for analyzing data using Python and Dash.</p>
+        <a id="project-link" href="https://github.com/brindha009/data-dashboard" target="_blank" class="button">View Project</a>
+
+    </div>
+
+    <!-- JavaScript for Slideshow -->
+    <script>
+        let slideIndex = 0;
+        let slides = document.querySelectorAll(".slides");
+        let dots = document.querySelectorAll(".dot");
+        let projectTitles = [
+            "Project 1: Data Science Dashboard",
+            "Project 2: Flask API for Predictions",
+            "Project 3: React Portfolio Website"
+        ];
+        let projectDescs = [
+            "An interactive dashboard for analyzing data using Python and Dash.",
+            "A Flask API that provides machine learning predictions via RESTful endpoints.",
+            "A beautiful personal portfolio built using React.js and Tailwind CSS."
+        ];
+        let projectLinks = [
+            "https://github.com/brindha009/data-dashboard",
+            "https://github.com/brindha009/flask-api",
+            "https://github.com/brindha009/react-portfolio"
+        ];
+
+        function showSlide(index) {
+            if (index >= slides.length) slideIndex = 0;
+            if (index < 0) slideIndex = slides.length - 1;
+
+            slides.forEach((slide, i) => {
+                slide.style.display = (i === slideIndex) ? "block" : "none";
+            });
+
+            dots.forEach((dot, i) => {
+                dot.className = dot.className.replace(" active", "");
+                if (i === slideIndex) dot.className += " active";
+            });
+
+            document.getElementById("project-title").innerText = projectTitles[slideIndex];
+            document.getElementById("project-desc").innerText = projectDescs[slideIndex];
+            document.getElementById("project-link").href = projectLinks[slideIndex];
+        }
+
+        function changeSlide(n) {
+            slideIndex += n;
+            showSlide(slideIndex);
+        }
+
+        function setSlide(n) {
+            slideIndex = n;
+            showSlide(slideIndex);
+        }
+
+        // Auto-slide every 5 seconds
+        setInterval(() => {
+            changeSlide(1);
+        }, 5000);
+
+        // Show the first slide
+        showSlide(slideIndex);
+  
+
     </script>
 
 </body>
