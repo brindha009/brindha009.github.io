@@ -4,291 +4,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brindha's Portfolio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 { color: #0077cc; }
-        p { font-size: 18px; color: #333; }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin-top: 10px;
-            background: #0077cc;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        .button:hover { background: #005fa3; }
-        .projects {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-        .project-card {
-            width: 300px;
-            padding: 15px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .project-card h3 {
-            color: #0077cc;
-        }
-        .dark-mode {
-            background-color: #222;
-            color: white;
-        }
-        input, textarea {
-            width: 80%;
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        button {
-            padding: 10px 20px;
-            background: #0077cc;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #005fa3;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to My Portfolio</h1>
-        <p>Hello! I'm <b>Brindha</b>, a Data Scientist & ML Engineer passionate about AI, Snowflake, and Databricks.</p>
-        <p>Check out my work below:</p>
-        <a href="https://github.com/brindha009" target="_blank" class="button">Visit My GitHub</a>
-    </div>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="menu-toggle" onclick="toggleMenu()">☰ MENU</div>
+        <ul id="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><button onclick="toggleDarkMode()">🌙 Dark Mode</button></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm <span id="typing-text"></span></h1>
+            <p>Data Scientist | ML Engineer | AI Enthusiast</p>
+            <div class="buttons">
+                <a href="resume.pdf" class="btn">Resume</a>
+                <a href="#about" class="btn">Click to Know More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" data-aos="fade-up">
+        <h2>About Me</h2>
+        <p>Passionate about data, AI, and cloud technologies.</p>
+    </section>
 
     <!-- Projects Section -->
-    <h2>My Projects</h2>
-    <div class="projects">
-        <div class="project-card">
-            <h3>Data Science Dashboard</h3>
-            <p>Interactive ML & Data Analytics dashboard.</p>
-            <a href="https://github.com/brindha009/data-dashboard" target="_blank" class="button">View Project</a>
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-grid">
+            <div class="project-card" data-aos="zoom-in">
+                <img src="project1.jpg" alt="Project 1">
+                <h3>Data Science Dashboard</h3>
+            </div>
+            <div class="project-card" data-aos="zoom-in">
+                <img src="project2.jpg" alt="Project 2">
+                <h3>Flask API for Predictions</h3>
+            </div>
         </div>
-        <div class="project-card">
-            <h3>Flask API for Predictions</h3>
-            <p>API that serves ML model predictions.</p>
-            <a href="https://github.com/brindha009/flask-api" target="_blank" class="button">View Project</a>
-        </div>
-    </div>
-
-    <!-- Skills Section -->
-    <h2>My Skills</h2>
-    <ul>
-        <li>🚀 Python, SQL, JavaScript</li>
-        <li>📊 Data Science: Pandas, NumPy, Scikit-learn</li>
-        <li>🤖 Machine Learning: TensorFlow, PyTorch</li>
-        <li>☁️ Cloud & Big Data: Snowflake, Databricks, AWS</li>
-    </ul>
+    </section>
 
     <!-- Contact Section -->
-    <h2>Contact Me</h2>
-    <form action="https://formspree.io/f/your-form-id" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <button type="submit">Send</button>
-    </form>
+    <section id="contact" data-aos="fade-up">
+        <h2>Contact Me</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
 
-    <!-- Dark Mode Button -->
-    <button onclick="toggleTheme()">🌙 Dark Mode</button>
-
-    <!-- GitHub Stats -->
-    <h2>My GitHub Stats</h2>
-    <img src="https://github-readme-stats.vercel.app/api?username=brindha009&show_icons=true&theme=radical">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
-        }
-        
-    <title>My Projects</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 900px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 { color: #0077cc; }
-        
-        /* Slideshow Container */
-        .slideshow-container {
-            position: relative;
-            max-width: 100%;
-            margin: auto;
-        }
-        
-        .slides {
-            display: none;
-            width: 100%;
-            border-radius: 10px;
-        }
-        
-        /* Navigation Buttons */
-        .prev, .next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        
-        .prev { left: 10px; }
-        .next { right: 10px; }
-        
-        .prev:hover, .next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
+        AOS.init();
+
+        function toggleMenu() {
+            document.getElementById("nav-links").classList.toggle("show-menu");
         }
 
-        /* Dots below the slideshow */
-        .dots-container {
-            text-align: center;
-            margin-top: 10px;
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+            localStorage.setItem("darkMode", document.body.classList.contains("dark-mode") ? "enabled" : "disabled");
         }
 
-        .dot {
-            height: 12px;
-            width: 12px;
-            margin: 5px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            cursor: pointer;
+        window.onload = function () {
+            if (localStorage.getItem("darkMode") === "enabled") {
+                document.body.classList.add("dark-mode");
+            }
+        };
+
+        // Typewriter Effect
+        const words = ["Brindha!", "a Data Scientist!", "a Coder!", "an ML Enthusiast!"];
+        let i = 0, j = 0;
+        let currentWord = "";
+        let isDeleting = false;
+
+        function typeEffect() {
+            let typingText = document.getElementById("typing-text");
+
+            if (i < words.length) {
+                if (!isDeleting && j <= words[i].length) {
+                    currentWord = words[i].substring(0, j++);
+                } else if (isDeleting && j >= 0) {
+                    currentWord = words[i].substring(0, j--);
+                }
+
+                typingText.innerHTML = currentWord;
+
+                let typingSpeed = isDeleting ? 100 : 200;
+                if (!isDeleting && j === words[i].length) {
+                    typingSpeed = 1000;
+                    isDeleting = true;
+                } else if (isDeleting && j === 0) {
+                    isDeleting = false;
+                    i++;
+                    if (i === words.length) i = 0;
+                }
+
+                setTimeout(typeEffect, typingSpeed);
+            }
         }
 
-        .active, .dot:hover {
-            background-color: #0077cc;
-        }
-
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <h1>My Projects</h1>
-        <p>Swipe through my featured projects!</p>
-
-        <!-- Slideshow Container -->
-        <div class="slideshow-container">
-            <img class="slides" src="https://via.placeholder.com/800x400.png?text=Project+1" alt="Project 1">
-            <img class="slides" src="https://via.placeholder.com/800x400.png?text=Project+2" alt="Project 2">
-            <img class="slides" src="https://via.placeholder.com/800x400.png?text=Project+3" alt="Project 3">
-
-            <!-- Navigation buttons -->
-            <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
-            <span class="next" onclick="changeSlide(1)">&#10095;</span>
-        </div>
-
-        <!-- Dots (Pagination) -->
-        <div class="dots-container">
-            <span class="dot" onclick="setSlide(0)"></span>
-            <span class="dot" onclick="setSlide(1)"></span>
-            <span class="dot" onclick="setSlide(2)"></span>
-        </div>
-
-        <!-- Project Descriptions -->
-        <h3 id="project-title">Project 1: Data Science Dashboard</h3>
-        <p id="project-desc">An interactive dashboard for analyzing data using Python and Dash.</p>
-        <a id="project-link" href="https://github.com/brindha009/data-dashboard" target="_blank" class="button">View Project</a>
-
-    </div>
-
-    <!-- JavaScript for Slideshow -->
-    <script>
-        let slideIndex = 0;
-        let slides = document.querySelectorAll(".slides");
-        let dots = document.querySelectorAll(".dot");
-        let projectTitles = [
-            "Project 1: Data Science Dashboard",
-            "Project 2: Flask API for Predictions",
-            "Project 3: React Portfolio Website"
-        ];
-        let projectDescs = [
-            "An interactive dashboard for analyzing data using Python and Dash.",
-            "A Flask API that provides machine learning predictions via RESTful endpoints.",
-            "A beautiful personal portfolio built using React.js and Tailwind CSS."
-        ];
-        let projectLinks = [
-            "https://github.com/brindha009/data-dashboard",
-            "https://github.com/brindha009/flask-api",
-            "https://github.com/brindha009/react-portfolio"
-        ];
-
-        function showSlide(index) {
-            if (index >= slides.length) slideIndex = 0;
-            if (index < 0) slideIndex = slides.length - 1;
-
-            slides.forEach((slide, i) => {
-                slide.style.display = (i === slideIndex) ? "block" : "none";
-            });
-
-            dots.forEach((dot, i) => {
-                dot.className = dot.className.replace(" active", "");
-                if (i === slideIndex) dot.className += " active";
-            });
-
-            document.getElementById("project-title").innerText = projectTitles[slideIndex];
-            document.getElementById("project-desc").innerText = projectDescs[slideIndex];
-            document.getElementById("project-link").href = projectLinks[slideIndex];
-        }
-
-        function changeSlide(n) {
-            slideIndex += n;
-            showSlide(slideIndex);
-        }
-
-        function setSlide(n) {
-            slideIndex = n;
-            showSlide(slideIndex);
-        }
-
-        // Auto-slide every 5 seconds
-        setInterval(() => {
-            changeSlide(1);
-        }, 5000);
-
-        // Show the first slide
-        showSlide(slideIndex);
-  
-
+        document.addEventListener("DOMContentLoaded", typeEffect);
     </script>
 
 </body>
